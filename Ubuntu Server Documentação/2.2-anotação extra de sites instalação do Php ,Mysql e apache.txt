@@ -1,0 +1,199 @@
+
+
+Anotações: das aulas 3 OpenSSH
+
+
+Observer essas duas variáveis para corrigir o erro no openssh
+
+[14:15] ROBSON SILVA VAAMONDE
+/etc/ssh/sshd_config
+
+[14:16] ROBSON SILVA VAAMONDE
+/etc/hosts.allow
+
+[14:17] ROBSON SILVA VAAMONDE
+sudo systemctl restart ssh
+
+Anotação sobre a diferença do OpenVPN e a VPN criada no servidor.
+
+
+
+
+**********************************************************************************************************************************************************************************************
+
+4ª Aula: Instalação e configuração do LAMP Server (Apache2, MySQL, Php, Perl, Python), instalação do Netdata e configuração da Regra de NAT padrão para o acesso remoto
+
+Servidor Web ( IIS) para hospedar sites. no linux para hospedar é gratuito
+
+Vamos Instalar primeiro o Apache que é um servidor web
+https://www.apache.org/
+
+Outro para Hospedar página de internet https://www.nginx.com/               não usaremos na aula mas pode pesquisar e aprender
+
+<!--Apache Tem como objetivo também de hospedar sites HTMl para hospedar os sites do tipo HTML mas temos umas linguagem dinâmicas que chamamos de Php
+
+https://www.w3c.br/pub/Cursos/CursoHTML5/html5-web.pdf
+
+<!-- Php tem a sua forma dinâmica e é linguagem de programação
+https://www.php.net/
+
+https://www.python.org/
+
+>java
+https://www.w3schools.com/js/DEFAULT.asp
+
+
+
+
+
+<!-- Banco de Dados para armazenar essas informações que fica salva nelas -->
+
+exemplo de um banco de dados gratuito é Mysql que é uma linguagem de programação para banco de dados
+
+https://www.mysql.com/                          iremos usar mysql e tem uma versão Maria DB https://mariadb.org/           o que se faz na mysql se faz na maria DB se muda alguma coisa 
+
+mysql é gratuito diferente da maria DB que existe melhorias na versão paga e na gratuita se cria esses recursos
+
+**************************************************************************************
+<!-- Instalar administrador de banco de dados pelo linux e usaremos um ambiente grafico chamado Myadmin  mysql via web-->
+https://www.phpmyadmin.net/
+
+https://github.com/netdata/netdata       para analizar os recursos da máquina como hadware software de monitoramento etc.
+
+https://www.w3schools.com/        para estudar HTML
+*******************************************************************************************************************************************
+Lamb Server aqui no linux a linguagem é nativa  
+
+ xampp é a versão para microsoft https://www.apachefriends.org/pt_br/index.html
+wampserver https://www.wampserver.com/en/
+
+<!-- Lamb Server -->           
+
+site que analisa o servidores web mais usados atualmente
+https://news.netcraft.com/archives/category/web-server-survey/
+https://w3techs.com/technologies/overview/web_server
+
+passo a passo
+para instalar basta fazer o seguinte comando para instalar tudo e integrar automaticamente
+sudo apt install lamp-server^
+
+
+
+Instala o apache
+
+lampe. sh           <!-- ele vai verificar se é root e vai acessar algumas configurações-- >
+tail -f 
+
+
+para site dinâmico
+
+https://br.wordpress.org/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

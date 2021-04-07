@@ -1,0 +1,200 @@
+
+Sempre que iniciar a estação server deve sempre atualizar o Sistema com o comando Sudo apt update para atualizar as listas dos repositórios atualizar a lista com os novos software
+Seguidamente do comando sudo apt update , deve ser colocado o comando Sudo upgrade ele vai verificar se precisa atualizar novos pacotes.
+
+Listas de pacotes:
+
+Sudo apt update  ( Esta é a etapa que realmente recupera informações sobre quais pacotes podem ser instalados, incluindo as atualizações disponíveis nos pacotes de pacotes atualmente instalados , de fontes da Internet)
+sudo apt upgrade     (Para instalar os pacotes)
+sudo apt full-upgrade   (ele vai buscar mais aplicativos ou mais recursos para serem atualizados)
+sudo apt dist-upgrade ( El não atualiza distribuição ele vai procurar atualização do sistema operacional pelo kernel)
+sudo apt autoremove    ( Ele vai remover aplicativo que não tenha necessidade)
+sudo apt autoclean       ( Ele limpa tudo que é cache algum arquivo residual coisas que o autoremove não tirou)
+
+OBS: Após toda essa atualização no Ubutun Server deve ser colocado para reinicializar para estar instalando serviços de redes  use os seguintes comandos para Reinicializar no ubuntu
+
+Comando para reinicializar o Servidor = Sudo Reboot                                                                                    ( Todos os passos testados estão em seu pleno funcionamento)
+
+Quando esta em produção nunca se reinicializa, caso for preciso fazer deve fazer uma janela de manutenção para não da conflito na hora da demanda de trabalho
+
+**************************************************************************************************************************************************************************************************************************************************************************
+Para poder acessar um programa que tem o recurso SSH no caso do Ubuntu abriremos no linux mint o terminal e digitaremos o seguinte comando:
+ esse recurso ssh no linux já é nativo  no windows temos o aplicativo chamado put e instalamos no windows para fazer a conexão testar isso
+
+Devemos dar o comando seguido do login do usuário e contatena com o @ indica juntar junto com o IP do Ubuntu server escolhido no exemplo atual é 172.16.28.1  que é o mesmo agora para entrar no Ubuntu remotamente
+
+ssh admin@172.16.28.1                     ( Feito esse comando agora será negociada a chave pública e chave privada ou a impressão da autentificação surgindo o conceito da criptografia
+yes/no                              (escolhemos agora uma das opções para dar o procedimento yes)
+
+Feito essa etapa ira agora aparecer uma opção para digirar uma senha que é usada para acessar o Ubuntu Server
+
+Password for admin@firewall.maximus.local: aqui digite a senha que é usada para acessar o pfsense e o console do firewall
+
+Se Tudo foi efetuado corretamente ira aparecer na tela do terminal a tela console do Ubuntu Server. 
+desta forma podemos acessar o Ubuntu por linha de comando remotamente usando o linux 
+
+                                                         ( passo a passo foi testado corretamente e obteve 100% de sucesso )
+
+
+**************************************************************************************************************************************************************************************************************************************************************************
+Dentro do servidor existe alguns comandos para dar assim que iniciar o acesso remoto:
+
+Comandos:
+
+w  ( este comando vai mostrar quem está logado no servidor mostrando o nome do usuário e ip usado )
+
+Observação:vamos colocar o comando nesse segundo passo 
+
+sudo hostname  ( este comando vai mostrar qual é o nome do servido que está sendo acessado)
+
+FQDN   é o nome totalmente qualificado devemos agora fazer essa modificação que de forma obrigatória é o nome seguido do domínio
+
+passo 1 para verificar onde fica a configuração do Hostname devemos fazer os seguintes passo pela linha do terminal
+
+cat /etc/ hostname                                (etc é a parte principal do linux onde todas as configurações estará nesse caminho é onde está o nome do servidor onde fica salvo se agregar o hostname)
+
+Passo 2 vamos criar um FQDN com o nome seguido do domínio usando o comando VIM que é o editor de texto padrão nos seguintes comandos
+
+sudo vim /etc/hostname             
+
+agora para conseguir editar devemos apertar o botão insert ou a letra i do teclado.
+
+feito isso vai estar o nome do servidor criado basta completar com ponto seguido do nome dominio escolhodo exemplo
+
+webserver.maximus.local         (surgindo o FQDN)
+
+para salvar devemos sair e salvar nos seguintes comando:  precionando esc shift : x minúsculo o x ele sai e salva.
+
+                                                                    ( Passo feito e testado 100% funcionando )
+**************************************************************************************************************************************************************************************************************************************************************************
+Toda vez que se meche no arquivo hostname deve se alterar outro arquivo chamado Hosts que é um banco de dados local de resolução de nome para fazer tradução de nome se vc não fornece o serviço de dns
+
+Comando para sua localização:
+
+cat /etc/hosts
+
+Para editar o caminho daremos o comando 
+Sudo vim /etc/hosts
+
+agora precionamos insert
+onde estar webserver ou o nome do servido escolhido se complete da seguinte maneira colocando o FQDN o nome seguido do dominio exemplo
+127.0.1.1 webserver.maximus.local e preciona tab e escreva o nome canônico webserver e damos o enter e na linha abaixo colocamos uma linha estática do servido o ip dele
+172.16.28.1 seguido de tabulador e escrevemos a mesma coisa acima webserver.maximus.local tabulador webserver
+
+assim ele consegue traduzir e para sair fazemos o mesmo comando feito acima  esc shift : x
+
+Agora fazemos outro passo  o NSSWITCH ele faz o chaveamento entre os servidores de nome e damos os seguintes comando
+
+cat /etc/nsswitch.conf
+
+agora analise as linhas o importante normalmente será essa linha 
+hosts:              files dns                  essa linha toda vez que o servidor consultar um computador primeiro ele vai analisar os files para ver se ter a referência dentro caso tenha ele vai consultar o serviçõ DNS
+
+agora faremos o comando sudo reboot para fazer o servidor resetar coloque ao lado para ver esse fundionamento.
+
+
+                   
+                                                                               ( Comando feito e testado 100% funcionando)
+**************************************************************************************************************************************************************************************************************************************************************************
+Agora vamos testar se tudo foi renomeado corretamente com os seguintes comandos:
+
+sudo hostname    ( verifique se tudo foi modificado corretamente)
+sudo hostname -A    (para mostrar tudo )
+sudo hostname -d  ( ele mostra somente o domínio)
+
+AGORA VAMOS TESTAR A LOCALIDADE COM OS SEGUINTES COMANDOS
+
+sudo localectl         (verifique a linha system locale com a variável LANG_ aqui mostra as configurações inclusive do teclado
+
+Configurando a hora mas antes digite o seguinte comando:
+
+sudo timedatectl                    ( aqui vai mostra a data e hora se o UTC tiver errado ficara errado e deveremos arruma a data e hora do servidor_
+
+ARRUMANDO DATA E HORA DO SERVIDOR: agora sempre que tiver uma data ou hora ele vai corrigir automaticamente
+
+sudo timedatectl set-timezone "America/sao_paulo"   
+sudo timedatectl            agora verifique se foi corrigido
+sudo vim /etc/systemd/timesyncd.conf             ( é um arquivo de texto com o foco nas duas linhas de baxo                  
+agora preciona esc shift : e digite    set number
+agora modifite o NTP apagando o # e complete com 1.stl.ntp.br
+fallback modifique tm completando a.ntp.br   apague o #
+agora salvamos com esc +shift: +x para sair e salvar 
+
+agora verificamos a data com o comando   sudo date 
+
+                                                                                                                               ( Comando feito e testado 100% em seu funcionamento)
+**************************************************************************************************************************************************************************************************************************************************************************
+COMANDO PICADINHO
+
+COMANDO HWCLOCK    O W VAI VERIFICAR QUAL É A HORA DA BIOS SE ELA TIVER ERRADA PELO SISTEMA OPERACIONAL PODE AJUSTA A HORA
+
+comando sudo hwclock
+
+sudo dpkg-reconfigure keyboard-configuration   (é usado somente caso o teclado esteja meio estranho) e reboot o sistema somente em caso de algo de erro no teclado
+
+
+Arquivo importante para consultar
+
+sudo cat /etc/default/console-setup              ( a linha charmap tem que está UTF 8 é responsável pela acentuação em textos
+
+
+
+
+                                                                                                                           ( Comando feito e testado 100% em seu funcionamento)
+**************************************************************************************************************************************************************************************************************************************************************************
+
+  sudo init 0  para fechar o servidor  este comando serve para desligar firewall, linux também.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,151 @@
+Documentando : Instalação e configuração do LAMP Server (Apache2, MySQL, Php, Perl, Python), instalação do Netdata e configuração da Regra de NAT padrão para o acesso remoto
+
+Introdução e sites de apoio:   Servidor Web ( IIS) para hospedar sites. no linux para hospedar é gratuito
+<!--Apache Tem como objetivo também de hospedar sites HTML para hospedar os sites do tipo HTML mas temos umas linguagem dinâmicas que chamamos de Php
+https://www.w3c.br/pub/Cursos/CursoHTML5/html5-web.pdf
+https://www.apache.org/
+Outro para Hospedar página de internet https://www.nginx.com/  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Aplicação para Hospedagem de site e Banco de Dados:   Procedimento de Instalação.
+**********************************************************************************************************************************************************************************************************
+
+Entre no Servidor remotamente com o comando 
+
+Sudo -i         <!-- Comando para virar Root -->
+ls                   <!-- Para vermos o acesso do openssh copiado da última aula de proteção -->
+
+agora entre no arquivo automatizado de segurança Openssh copiado ubuntu-1804 comando
+
+cd ubuntu-1804/           
+ls                <!-- VER O CONTEUDO DA PASTA-->
+git pull        <!-- para atualizar o repositório de script que está usando deve ta dentro da pasta para executa esse comando -->
+
+feito isso abra um outro terminal e loga no servidor para fazer o monitoramento.
+
+agora verifica se a porta de conexão apache 80 e a porta 3306 mysql se está ok com o seguinte comando dentro da pasta ubuntu-1804
+verificando se o servidor de web está tudo ok para entra em execução com o seguinte comando:
+
+Bash lamp.sh                  <!--    A extensão .sh é linguagem do shell script  agora ele vai fazer toda verificação-->
+
+agora no outro terminal use o comando para fazer o monitoramento  entrando no servidor será mostrato toda a atualização e se tiver alguma falha poderá fazer o monitoramento em tempo real
+será instalado e atualizado o Php , mysql e o lamp
+
+tail   -f   /var/log/lamp.sh             <!-- Respeitando sempre os Espaços -->
+
+Basta da enter quando o phpmyadmin estiver instalado com sucesso dando Enter para iniciar o processo de configuração
+ 
+ <!-- Comando testado e executado com 100% de sucesso --> 
+*********************************************************************************************************************************************************************
+Passo 2 Entrando para fazer a configuração 
+
+Agora edite o arquivo Apache dando Enter normalmente não editamos modificamos somente a seguinte linha.
+
+Acresenta somente uma variável lá no final que se chama ( ServerName ) deve colocar  localhost e para salvar basta dar Esc +shift :q!
+
+Agora vamos editar o arquivo php.ini <! -- esse arquivo só modifica com base no que vai usar -->
+ <!-- nesse ponto não precisamos mudar só mudamos quando pedirem uma mudança em uma variável --> para salvar Esc +shift :q!
+
+agora modificamos o seguinte arquivos:
+
+Arquivos do Mysqld.cnf  para modificar     para sair e salvar Esc +shift :q!   <!-- editar o arquivo banco mysql se pode modificar mas esse já está pronto --> para sair usamos Esc +shift: set number para colocarmos um número de linha e na linha 26 temos uma porta de conexão de banco de dados 3306 padrão para se conectar.
+
+verifique o apache e as portas 3306 e a porta 80 se sim foi feito com sucesso!!!
+
+<!-- Comando testado e executado com 100% de Seucesso>
+*************************************************************************************************************************************************************************
+Passo 3   A verificação do diretório dos sites apache com os seguintes comandos:
+
+cd  /var/www/html             <!-- É o diretório real do caminho do apache -->
+cd  /var/www/html #            <! ficará dessa forma indicando que o caminho foi criado com sucesso -->
+ls                                             <!-- Damos esse comando para listar os arquivos que nele contem -->
+
+vai aparecer index.gtml junto com o phpinfo.php e o teste.html      esse teste.html é o site que se pode ser criado e modificado 
+
+usamos o seguinte comando para visualisar o conteudo de um arquivo.
+
+cat  phpinfo.php              <!-- analisa sempre no final onde está ponto e virgula no final está tudo ok -->
+
+<!-- Testado e configurado com sucesso -->
+******************************************************************************************************************************************************************************
+passo 4 Agora testando o servidor web para ver se está tudo em seu funcionamento
+
+abra o navegador e coloque o ip do servidor 172.16.28.27  dando enter e aparecer a página do Apache indica que foi feito a instalação com sucesso !!!
+
+agora vamos testar o site que nele está criado como um teste digitando no navegador 172.16.28.27/teste.html         
+
+
+agora vamos testa o php digitando no navegador 172.16.28.27/phpinfo.php    na linguagem php em uma pequena tag ele vai mostra toda a documentação do servidor dando versão do php e do servidor e todas as variáveis
+
+agora vamos verificar o Mysql se está funcionando corretamente. digitando no navegador 172.16.28.27/phpmyadmin    tem que aparecer uma aplicação web rodando no apache
+
+<!-- Testado com sucesso -->
+***************************************************************************************************************************************************************************************************
+passo 5  Agora vamos logar 
+
+Utilizador coloca o nome de Root
+e palavra-passe coloca a senha pti@2018
+
+
+
+servidor web para hospedagem dinâmica ou não dinamica.
+mysql
+aplicação web rodando sobre apache desenvolvida em php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***********************************************************************************************************************************************************************************************************
+	

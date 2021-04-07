@@ -1,0 +1,157 @@
+Configurando a Segurança do Servidor Ubuntu com o protocolo SSH:  permitindo algum usuário, algumas redes terem acesso limitando alguns acessos para evitar invasão.
+Linux vem com sua segurança base mas se deve configurar mais recursos para deixar ainda melhor.
+
+Para isso use o Linux via terminal e entre remotamente no Ubuntu com o protocolo ssh para poder clonar uma automação.
+
+ssh max@172.16.28.1
+w              ( para ver qual usuário e ip esta sendo usado )
+sudo -i         ( para usar um script criado precisa entrar como root e damos esse comando)
+w        ( vai mostar os dados do usuário no momento
+id       ( vai mostrar se virou root ir aparecer as seguintes )
+
+Como clonar um Script de automoção de segurança devermos fazer o seguinte comando.
+
+git clone https://github.com/vaamonde/ubuntu-1804              ( esse endereço baixamos para o servidor o progeto github)_
+dando enter e se ele não pedir usuário e  nem senha indica que a clonagem foi feito corretamente caso o contrario não foi efetuado com sucesso.
+ls          ( para ver se foi clonado)
+cd ubuntu-1804           (vai entrar na pasta clonada)
+ls                                ( para ver todo o conteúdo dentro) script .sh  é a extenção de automoção ou programação usando shell script
+
+                                           (Comando testado 100% funcionando)
+*****************************************************************************************************************************************
+Sobre o Script que será clonado: openSSH é um protocolo que segurança quando se usa o powershell
+Os arquivos de Log automatizado. teremos a variavel de log. faremos o monitoramento em tempó real para ver se vai dar algum problema
+o objetivo do script é automatiza não interagir com o usuário.
+
+Para executar o script clonado devemos fazer os seguintes comandos dentro da pasta script clonado:
+
+bash openssh.sh                  ( comando para executar na primeira tela.)
+
+Use agora dois terminal para o seguinte passo de monitoramento. e se autentica nesse segundo via ssh
+
+USANDOsudo
+                                                                      (comando testado 100% Funcionando)
+*****************************************************************************************************************************************
+Vamos fazer agora a configuração do script e do sshd_config .              (segurança do SSH)  Regra nunca permitir acesso ao root no ssh na segurança do ssh
+
+analise as seguinter funções  na seguinte ordem e explicações
+
+AllowUsers  seguido do nome do usuário . ( Nessa variável usuários liberados podemos editar entrando no modo de edição digitando insert ou i e modifique o usuário.)
+Pode colocar vários usuários na administração dando espalo casa tenha mais usuários.
+
+No servidor linux diferente do windows que cria um nome automáticamente do grupo aqui se pode mudar colocando o mesmo nome do usuário
+
+AllowGroups seguido do nome do usuário.
+
+AGORA SAIA DO MODO INSERT PRECIONANDO ESC.
+                                                                                    (comando testado 100% Funcionando)
+*****************************************************************************************************************************************
+ENTRANDO NO MODO DE COMANDO COM OS SEGUINTES COMANDO  (SHIFT : set number) Assim habilitando do lado esquerdo as numerações em amarelo das linhas
+
+Agora analisando as negações de acesso Root no servidor ficará da seguinte maneira.
+ Desta forma estamos forçando a negação de acesso .
+
+DenyUsers root
+DenyGroups root
+
+Banner que será apresentado no momento do acesso remoto ao servidor de openssh, não é recomentado
+utilizar acentuação os seguintes comandos abaixo pode ser modificado
+
+Banner /etc/ussue.net
+
+O tempo após o qual o servidor será desconectado se o usuário não tiver efetuado login com êxito.
+ou se ficar sem mecher podemos habilitar ou desabilitar o recurso. para desabilitar qualquer recursos colocamos
+um sustenido (#) ou o velho jogo da velha # na frente do comando exemplo 
+
+LoginGraceTime 50             (recurso Habilitado)
+#LoginGraceTime 50             (Recurso desabilitado)
+
+Tentativa máxima de conexões simultâneas no servidor de openSSH dando uma sequência de segurança;
+proteção de ataque de força bruta.
+
+MaxAuthTries 3                
+
+Npumero de usuários ou sessoçoes que podem se conectar remotamente no servidor openSSH
+
+MaxSessions 3
+
+especifica o npumero máximo de conexões simultâneas não autentucadas com o OpenSSH para ser
+rejeitado a conexão.
+
+5= conexão não autenticada l 60= rejeitada 60% das conexões l 10=tentativas de conexões
+
+Maxstartups 5:60:10
+
+
+Endereço IP do servidor de openSSH que está liberado para permitir conexões remotas via protocolo SSH 
+aqui devemos modificar no script de acordo com o ip do servidor
+
+ListenAddres 172.16.28.72
+
+agora podemos sair com o seguinte comando esc +shift :x                        (testado com 100% de acertamento)
+*****************************************************************************************************************************************
+Site de refeência ( Guia Foca)
+
+Até o momento temos proteção de usuário e senha no SSH agora faremos mais outra camada de proteção.
+colocaremos no cadeado uma senha para poder abrir dando mais proteção no servidor. precisa ter a senha e a chave. atutenticação de duas vias ou duas etapas 
+
+Agora iremos editar o arquivo TCP Wrappers ele é um firewall de aplicação que escolhe qual rede pode entrar no servidor basta da enter
+
+se aparecer a seguinte frase arquivo de configuraçãp TCPWrapped hosts.allow.  basta dar enter.
+
+somente as duas colunas do lado esquerdo é importante.
+
+sshd ele faz referência ao binário do serviço    e a segunda faz referência do ip que vai se conectar na rede e devemos modificar com o seguinte ip de acordo com esse 172.16.28 .         ( o host indica todos da rede o 28 é de acordo com ip escolhido no penultimo)
+antes estava 10 no lugar do 28
+                                                                                                                        terceira coluna se a rede for permetida ele vai executar outro comando para gera um arquivo de log ele vai autenticar a pessoa que logou em tempo real.
+Modifique também o ip mysql e o in.telnetd  o mesmo ip dado no sshd
+
+agora basta salvar com o seguinte comando esc+shift:x
+
+                                                                                  (Comando testado 10-0% funcionando)
+*****************************************************************************************************************************************
+nas outras duas confirmações em enter não precisa modificar nada basta salvar e sair para concluir a configuração do OpenSSH server
+Agora o sistema está seguro.
+
+AGORA SAIA DO MODO REMOTO E LOGUE NOVAMENTE SE APARECER UM BANER FOI FEITO COM SUCESSO !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

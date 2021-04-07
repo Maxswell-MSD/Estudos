@@ -1,0 +1,84 @@
+Documentação e configuração do acesso remoto do Firewall via terminal linux              
+
+***********************************************************************************************************************************************************************************************************
+Acesso Remotamente do servidor pelo Linux Mint: Normalmente o Firewall e o Servidor vai está dentro dos Haquer e normalmente temos que sempre acessar eles de forma remotamente
+com a limitação de teclado , cabo e mouse devemos fazer as seguintes configurações para ter esse acesso remoto :
+
+Acesso Remoto do Firewall ativando o Shell que é o protocolo remoto nas distribuições linux :      usando o Linux Mint para poder fazer todas essas integrações e administração do servidor e do firewall
+
+Devemos Habilitar este accesso nos seguintes passos a serem seguidos no pfsense que é usado via navegador para configurar mas para acessar modo navegador via console.
+Shell tem o nível de segurança quando o usuário está no acesso local ou na internet por usar criptografia.
+
+Configurando o Shell no Firewall:
+
+Usamos o navegador pfsense para efetuar essa configuração nos seguintes passos:
+
+Acessando pelo navegador digite o IP do firewall no caso atual 172.16.28.254 e entramos no firewal no pfsense bashboard.
+
+para Habilitar e permitir o acesso remoto iremos na aba dentro do pfsense SYSTEM > ADVANCED
+
+ADVANCED = usando a barra de rolagem procuremos na aba em vertical lado esquerdo Secure shell server e vamos habilitar  o enable secure shell
+
+Usando barra de rolage e verifique as outras opções que são nível de segurança Porta padrão do serviço SSH 22 
+
+OBS: é extremamente colocar uma segurança para ter acesso ao console do Firewal pelo terminal próprio configurando pelo pfsense limitando acesso de qualquer pessoa entrar no console
+devemos no pfsenser SYSTEM> ADVANCED + barra de rolagem tica a aba CONSOLE OPTIONS  console menu  . Assim aumentando a segurança de acesso ao menu do firewall terminal próprio. dentro do pfsense
+depois que salva essa opção aparecerá ao lado de um sino uma numeração indicando que foi configurado corretamente. vai mostrar que foi gerado uma chave para o SSH e foi inicializado.
+
+Analise o firewall se aparece a opção Login: esse loguin é o mesmo que se da no site pfsense para ter acesso ao monitoramento do firewal via navegador.
+
+
+                                                            ( Testado com Sucesso todo esse procedimento) toda vez que inicializar o firewal vai pedir usuário e senha na tela do firewall
+***************************************************************************************************************************************************************************************************************************
+Depois de  Configurar o Acesso remoto Shell e ativando o SSH iremos testar no linux mint se está funcionando corretamente:
+
+Para poder acessar um programa que tem o recurso SSH no caso do firewall abriremos no linux mint o terminal e digitaremos o seguinte comando:
+ esse recurso ssh no linux já é nativo  no windows temos o aplicativo chamado put e instalamos no windows para fazer a conexão testar isso
+
+Devemos dar o comando seguido do login do usuário e contatena com o @ indica juntar junto com o IP do Firewall escolhido no exemplo atual é 172.16.28.254 pfsense que é o mesmo agora para entrar no firewall remotamente
+
+ssh admin@172.16.28.254                      ( Feito esse comando agora será negociada a chave pública e chave privada ou a impressão da autentificação surgindo o conceito da criptografia
+yes/no                              (escolhemos agora uma das opções para dar o procedimento yes)
+
+Feito essa etapa ira agora aparecer uma opção para digirar uma senha que é usada para acessar o firewall
+
+Password for admin@firewall.maximus.local: aqui digite a senha que é usada para acessar o pfsense e o console do firewall
+
+Se Tudo foi efetuado corretamente ira aparecer na tela do terminal a tela console do firewall. e para sair da tela basta colocar 0 para sair do logout ssh only
+desta forma podemos acessar o firewall via grafico pelo navegador pfsense ou por linha de comando remotamente usando o linux 
+
+                                                         ( passo a passo foi testado corretamente e obteve 100% de sucesso )
+***************************************************************************************************************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
