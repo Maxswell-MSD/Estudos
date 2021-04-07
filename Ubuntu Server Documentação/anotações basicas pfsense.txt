@@ -1,0 +1,9 @@
+anotação basica pfsense interface.
+
+interfaces 
+services status
+traffic graphics
+gateway
+services status
+firewall logs
+interface statistics
