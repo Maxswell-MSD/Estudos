@@ -1,0 +1,161 @@
+Documentação Para controlar o acesso do usuário no C: 
+
+Usando GPO - Politica de Grupo para controlar o que o usuário pode fazer ou não na máquina.
+
+<!-- As ferramentas indicadas são encontradas em Ferramenta / Gerenciamento de política de Grupo -->
+
+Gerenciamento de política de Grupo        #! Do lado esquerdo veremos Floresta: e o nome do domínio local.
+
+<!-- Aagora expande floresta e expande o domínio e dominio.local  da seguinte forma -->
+
+vemos as uu vila ou contâiner   escolha uma uu em que os usuários estejam salvos dando botão direito
+Floresta / domínio /dominio.local / Diniz e cria um GPO neste dominio e fornecer um link para ele aqui...
+
+<!-- Novo GPO Crie o nome dessa regra de GPO exemplo; Proibição de accesso a unidade de disco local C: -->
+
+<!-- Ele cria com o nome escolhido mas fica guardada na seguinte pasta objetos de politicas de grupo mas vincula a UUvila -->
+
+<!-- Comando testado 200% Funcionando-->
+*****************************************************************************************************************************************************************************************
+
+agora com ela criada clique com botão direito em " Proibição de accesso a unidade de disco local C ou em qualquer nome que foi criado e nela e escolha em Criar.
+
+Temos as seguintes regras que vale para:
+
+Configuração do computador
+<politicas> e <Preferência>
+
+
+Configuração do usuário                              #! Preferencia chamamos se sujestões.
+<Políticas> e <Preferência>                         #! politica indica poder total.
+
+<!-- Escolheremos a opção de Configuração do usuário nos seguintes passo -->
+
+/Configuração do usuário / Políticas / modelos administrativos: definições de / Componentes do Windows / explorador de arquivos.
+
+<!-- Em explorador de arquivos basta clicar em cima e irá  aparecer uma cama de listas do lado direito chamamos de regras -->
+
+explorador de arquivos / Ocultar estas unidades especificadas em meu computador.
+
+<!-- dando dois cliques duplos em em ocultar estas unidades especificadas em meu computador escolhemos a opção habilitar e agora em opções
+iremos selecionar uma das seguintes combinações de acordo com o que deseja ou escolha as opções indicadas.  escolha A, B, C, D ou outras para testar-->
+
+Observação cujo essa aplicação demora para ser aplicado, ou reiniciamos a máquina, ou clicamos em sair na extação ou damos o comando na máquina
+
+Comando dado em cada máquina para ativar a função. 
+
+gpupdate /force         #! Para não esperar 90 minutos.
+
+Esse comando que escolhemos Ocultar estas unidades especificadas em meu computador ele somente oculta o disco local da vista do usuário
+mas tem como acessar via CMD ou via campo de pesquisa dando o diretório mas temos como deixar amostra o disco local c mas o usuário fica impedido de entrar
+
+<!-- Comando testado 200% Funcionando-->
+*************************************************************************************************************************************************************************************
+Bloqueando de forma correta O GPO para o usuário ser bloqueado para entrar. ou usamos duas regras ou selecionamos somente para ele ser impedido de acessar.
+siga os mesmos passos acima e desmarque a opção que somente oculta e escolha agora uma nova política que se chama .
+
+Impedir o acesso a unidades de meu computador. ( Habilite e escolha A,B,C E D)
+
+use o comando toda vez que muda a regra da extação ou reinicia, ou faz logof mas use o comando para aplicar mais rápido
+
+gpupdate /force         #! Para não esperar 90 minutos.
+
+
+<!-- Mais ainda existe uma brecha o CMD que tem como ter acesso ainda para impedir um racker etc -->
+
+Como travar essa brecha:
+
+passo 1 : dir       #! Comando dir no cmd para acessa disco local c
+
+PASSO PARA FAZER ESSA PROIBIÇÃO CRIANDO REGRA PARA ISSO:
+
+<!-- Siga o pesmo passo de criação de GPO escolhendo uma UU vila que possui usuário  dando nome como Bloqueio de acesso ao CMD c -->
+
+Mas ela fica em outro lugar.
+
+Configuração de usuário
+<políticas>  / Modelos administrativo /sistema e ao lado vai ter uma lista de regras e escolha a seguinte regra.     "Impedir acesso ao promd de comando." agora habilite e a opção mantenha o Não.
+
+Agora use o comando na extação 
+gpupdate /force
+
+e agora tente abrir o CMD e use o comando para tentar entrar no c
+
+comando dir.
+
+<!-- Comando testado 200% Funcionando-->
+*****************************************************************************************************************************************************************************************************************************
+
+Criptografia de pastas e Compactação de pastas.
+
+Compactação de pasta vai permitir reduzir o tamanho de espaço dos documentos contido nas pastas mas será possível
+
+escolha uma  pasta botão direito >propriedade>ações>avançados e marque somente uma opção não pode marcar as duas marque a compactação
+
+fazendo o mesmo procedimento acima agora marque somente a criptografia. o usuário que criar qualquer tipo de arquivo somente ele poderá ler esse arquivo cada usuário tem o seu ID na rede ou seja conforme for necessario colocar um nível de segurança em determinado documento essa funsão é a mais indicada para área de financeiro, gerencia ou marqueting
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+Documentação sobre Windows Server e Triagem de armazenamentoo FSRM: é a forma de decidir de acordo com a função do profissional o que tipo de arquivo ele podera salvar
+na pasta dele de trabalho de acordo com a função ou até mesmo sua pasta pessoal.
+
+Passos a serem seguidos para efetivar esse controle pelo windows server 2012r2.
+
+Escolha duas pastas que já esteja compartilhada escolha a pública para bloquear os arquivos executável e qualquer outras pastas para está aplicando essa limitação.
+e pode ser feito também na pasta base. exemplo das pastas já compartilhadas.
+
+//srvmaximus/Publico
+//srvmaximus/Financeiro
+//srvmaximus/Home$
+
+<!--  Depois de escolher quais as pastas que será feita a triagem de armazenamento FSRM proguraremos em ferramenta no server a função
+Gerenciador de recursos de Servidor de Arquivos -->
+
+<!-- Entrando nessa aba de gerenciador de recursos de servidor de Arquivos iremos reparar que é onde temos as opções de gerenciamento de cota
+que limita o tamanho de MB Procuraremos do lado esquerdo " Gerenciamento de Triagem de Arquivos"-->
+
+Ferramenta /Gerenciadorde recurso de servidorde arquivos /Gerenciamento de Triagem de Arquivos.
+
+<! Vai aparecer Três opções Sempre se configura debaixo para cima  e o objetivo é criar somente Ativo-->
+
+Triagens de Arquivos                                       # Nesse campo fica amostra todas as triagens de arquivos criadas.
+Modelos de Triagem de Arquivos                 # Iremos ver a função tipo de triagem Passivo somente analiza e o ativo ele bloqueia determinados arquivos.
+Grupos de Arquivos                                          # Windows tem pronto alguns determinados recursos é posível nesse campo criar um grupo personalizado de acordo com a extensão que deseja bloquear.
+
+<!-- Escolha a opção " Modelos de Triagem de arquivos " e clique do lado direito em " Criar Modelo de Triagem de Arquivos".
+
+< Modelos de Triagem de Arquivos >                                              #! Agora Coloque o nome do Modelo. exemplo "Bloquear imagens-videos-executaveis" só pode salvar documentos. Usaremos a pasta Financeiro.
+Modelos de Triagem de Arquivos / Tipo de Triagem                  #!  Escolha a opção Triagem Ativa que indica Bloqueio.
+Modelos de Triagem de Arquivos / Grupos de arquivos             #! Escolha agora Grupos de Arquivos a serem Bloqueados de acordo com a sua necessidade.
+
+<!-- Em Grupos de arquivos " Selecinar grupos de arquivos a serem bloqueados, será listado uma gama de tipos de arquivos para serem ticados , ou seja bloqueados"
+
+Tique as opções como exemplo para financeiro. tique em ( arquivos executáveis -audio e vide-arquivo de imagem + OK)     #! e se pode usar a opção caso tenha criada personalizada em grupo de arquivos.
+
+agora nas três opções em Gerenciamento de trigem entramos em " Triagem de arquivo "
+
+Triagem de Arquivo        #! Agora Do lado direito clicamos em Criar triagem de arquivo.
+
+triagem de arquivo / Procurar... pasta que deseja aplica o recurso seja ela financeio, publica etc / Propriedades da triagem de arquivo
+
+<!--  Derivar propriedades desse modelo de triagem ( Recomendado) Nessa opção vamos escolher o que criamos " Bloquear imagem-videos-executaveis" e clique em criar
+<!-- Depois de feito crie uma derivação para pasta pública sem precisar criar e use as opções já existente e aplique a funsão executavel.
+
+
+
+<!-- Comando testado 200% Funcionando-->
+*************************************************************************************************************************************************************************************************************************************************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
