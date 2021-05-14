@@ -1,0 +1,17 @@
+Anotações De configurações TP-link
+
+<!-- Anotações de câmera -->
+
+usb é conectado na parte inferior
+observer luz azul + luzes piscando= barulho
+
+<!-- Anotações de internet por tomada powerline-->
+
+conectar o adaptador no roteador ou no pc
+
+conexão:
+
+indicado para fazer as conexões pela casa plugando um equipamento conectado no roteador na tomada, e usar outro equipamento para efetiva o mesmo recursos
+basta plugar sem precisar configurar, nele tem função de distribuir o wifi basta fazer o mesmo procedimento que é feito para repetir 
+"===================================================================================================================================================================
+equipamentos = interruptor wifi + Base para Interruptor wifi
